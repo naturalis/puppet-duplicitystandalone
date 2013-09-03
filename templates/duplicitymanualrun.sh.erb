@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Duplicity manualrun backup script, created by duplicitystandalone puppet manifest
+#
+
+<% [@environment].flatten.each do |environment| -%>export <%= environment %>
+<% end -%>
+
+<%= @_first_pre_command -%>
+<%= @_pre_command -%>
+duplicity --full-if-older-than <%= @_full_if_older_than -%> --s3-use-new-style --s3-european-buckets <%= @_encryption -%><%= @mysqlbackupdir -%><% [@backupdirs].flatten.each do |backupdir| -%> --include '<%= backupdir %>'<% end -%> --exclude '**' / <%= @_target_url -%>
+<%= @_remove_older_than_command -%>

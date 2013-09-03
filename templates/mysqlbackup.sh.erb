@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# MySQL Backup Script
+#  Starts automysqlbackup and deletes old backups.
+#
+# MySQL code:
+# GRANT EVENT, SELECT, RELOAD, LOCK TABLES ON *.* TO 'user'@'localhost'
+# IDENTIFIED BY 'password';
+# FLUSH PRIVILEGES;
+#
+PATH=/usr/bin:/usr/sbin:/bin:/sbin
+find /var/backup/db -mtime +<%= @mysqlbackupdays -%> -exec rm -f {} \;
+/usr/bin/automysqlbackup
+
+

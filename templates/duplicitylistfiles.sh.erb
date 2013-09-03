@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Duplicity list files in bucket script, created by duplicitystandalone puppet manifest
+#
+
+<% [@environment].flatten.each do |environment| -%>export <%= environment %>
+<% end -%>
+
+duplicity list-current-files --s3-use-new-style --s3-european-buckets <%= @_target_url -%>
+

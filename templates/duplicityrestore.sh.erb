@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+# Duplicity restore script, created by duplicitystandalone puppet manifest
+#
+
+<% [@environment].flatten.each do |environment| -%>export <%= environment %>
+<% end -%>
+
+if [ -z "$3" ];then
+    echo "usage   : duplicityrestore.sh <files to restore> <time> <target folder>"
+    echo "example : duplicityrestore.sh /etc/httpd/ 1 /tmp/restore"
+fi
+
+if [ -z "$1" ]; then 
+    echo "Enter files to restore, path names do not start with '/'"
+    echo "restore command is recursive."
+    read filestorestore
+else
+    filestorestore="$1"
+fi
+
+if [ -z "$2" ]; then 
+    echo 'The acceptible time strings are intervals (like "3D64s"), w3-datetime'
+    echo 'strings, like "2002-04-26T04:22:01-07:00" (strings like '
+    echo '"2002-04-26T04:22:01" are also acceptable - duplicity will use the'
+    echo 'current time zone), or ordinary dates like 2/4/1997 or 2001-04-23'
+    echo '(various combinations are acceptable, but the month always precedes'
+    echo 'the day).'
+    echo "Enter time to restore:"
+    read restoretime
+else
+    restoretime="$2"
+fi
+
+if [ -z "$3" ]; then 
+    echo "Enter target path, directory will be created:"
+    read targetfolder
+else
+    targetfolder="$3"
+fi
+
+duplicity restore --s3-use-new-style --s3-european-buckets <%= @_encryption -%> --file-to-restore=$filestorestore --time $restoretime <%= @_target_url -%> $targetfolder
+
