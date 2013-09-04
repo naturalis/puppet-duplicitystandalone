@@ -49,7 +49,7 @@ duplicitystandalone::mysqlbackupdays: 120
 duplicitystandalone::bucket: 'linuxbackups'
 duplicitystandalone::full_if_older_than: '30D'
 ```
-
+Explanation of the variables:
 ```
 backuphour and backupminute     : control crontab schedule setting for the backup script
 backupdirs                      : array with which directories to backup, works recursive
