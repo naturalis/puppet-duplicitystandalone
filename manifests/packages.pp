@@ -1,7 +1,12 @@
 class duplicitystandalone::packages {
   # Install the packages
   case $operatingsystem {
-    centos, redhat: {
+    centos: {
+      package {
+        ['duplicity','python-boto','perl-GnuPG','python-cloudfiles','ruby-augeas','s3cmd','PackageKit-cron']: ensure => present
+      }
+     }
+    redhat: {
       package {
         ['duplicity','python-boto','perl-GnuPG','python-cloudfiles','ruby-augeas','s3cmd']: ensure => present
       }

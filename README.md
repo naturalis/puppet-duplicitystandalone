@@ -2,8 +2,20 @@ puppet-duplicitystandalone
 ===================
 
 Puppet module to install 
+Install puppet-base first or make sure puppet is installed and is using a yaml backend for hiera data. 
 
-For more information using this tool: 
+puppet-base installation: 
+https://github.com/naturalis/puppet-base
+
+```
+curl https://raw.github.com/naturalis/puppet/master/private/scripts/cloud-puppet.sh > cloud-puppet.sh; chmod +x cloud-puppet.sh;./cloud-puppet.sh base
+```
+module installation:
+```
+git clone https://github.com/naturalis/puppet-duplicitystandalone.git /etc/puppet/modules/duplicitystandalone
+puppet apply /etc/puppet/modules/duplicitystandalone/tests/init.pp
+```
+
 
 Parameters
 -------------
@@ -15,7 +27,7 @@ duplicitystandalone
 
 Dependencies
 -------------
-None
+Puppet installed with yaml backend. tested with https://github.com/naturalis/puppet-base
 
 Examples
 -------------
