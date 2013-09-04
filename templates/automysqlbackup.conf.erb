@@ -62,6 +62,8 @@ CONFIG_backup_dir='/var/backup/db'
 
 # List of DBNAMES to EXLUCDE if DBNAMES is empty, i.e. ().
 #CONFIG_db_exclude=( 'information_schema' )
+CONFIG_db_exclude=( 'performance_schema' 'information_schema' 'cond_instances' )
+
 
 # List of tables to exclude, in the form db_name.table_name
 # You may use wildcards for the table names, i.e. 'mydb.a*' selects all tables starting with an 'a'.

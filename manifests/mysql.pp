@@ -6,8 +6,6 @@ class duplicitystandalone::mysql (
 ) 
 {
   notice('automysqlbackup backup enabled')
-
-
   case $operatingsystem {    
     centos, redhat: {
 	$augeaspackagename = 'ruby-augeas'
@@ -19,7 +17,6 @@ class duplicitystandalone::mysql (
 
 # Create contrib directory in augeas directory for custom mysql lens
   $augeascontribdir = '/usr/share/augeas/lenses/contrib/'
-  notice($augeaspackagename)
   file { $augeascontribdir:
     ensure      => directory,
     mode	=> '0700',
