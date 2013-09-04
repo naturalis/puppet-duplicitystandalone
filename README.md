@@ -1,7 +1,6 @@
 puppet-duplicitystandalone
 ===================
 
-Puppet module to install 
 Install puppet-base first or make sure puppet is installed and is using a yaml backend for hiera data. 
 
 puppet-base installation: 
@@ -15,7 +14,6 @@ module installation:
 git clone https://github.com/naturalis/puppet-duplicitystandalone.git /etc/puppet/modules/duplicitystandalone
 puppet apply /etc/puppet/modules/duplicitystandalone/tests/init.pp
 ```
-
 
 Parameters
 -------------
@@ -31,7 +29,7 @@ Puppet installed with yaml backend. tested with https://github.com/naturalis/pup
 
 Examples
 -------------
-Hiera yaml
+Hiera yaml, when used with puppet-base then create a file /etc/puppet/hieradata/user-data.yaml with these contents.
 
 ```
 duplicitystandalone::backmeup: true
