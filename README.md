@@ -94,7 +94,10 @@ This module has been built on and tested against Puppet 3.2.4 and higher.
 
 The module has been tested on:
 - Ubuntu 12.04LTS, 13.04
-- CentOS 6.4 
+- CentOS 6.3, CentOS 6.4
+
+Not working on: 
+- CentOS 5.x or lower due to Epel repo usage
 
 Authors
 -------------
