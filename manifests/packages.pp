@@ -1,16 +1,13 @@
 class duplicitystandalone::packages {
   # Install the packages
 
-
-
   case $operatingsystem {
     centos: {
-
       file { "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL6":
         owner => root, 
         group => root, 
         mode => 0444,
-        source => "puppet:///modules/duplicitystandalone/RPM-GPG-KEY-EPEL"
+        source => "puppet:///modules/duplicitystandalone/RPM-GPG-KEY-EPEL6"
       }
     
       yumrepo { "epel":
